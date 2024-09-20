@@ -24,9 +24,6 @@ export default function CreatePlacePage() {
       });
       if (response.ok) {
         router.push("/");
-      } else {
-        const errorData = await response.json();
-        console.error("Failed to add place", errorData);
       }
     } catch (error) {
       console.error("Error adding place", error);

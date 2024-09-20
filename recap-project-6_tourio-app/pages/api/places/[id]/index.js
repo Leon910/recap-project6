@@ -12,7 +12,14 @@ export default async function handler(request, response) {
   try {
     if (request.method === "GET") {
       const place = await Place.findById(id);
-      return response.status(200).json(place);
+      response.status(200).json(place);
+      return;
+    }
+
+    if (request.method === "PATCH") {
+      const place = await Place.findByIdAndUpdate(id);
+      response.status(200).json(place);
+      return;
     }
   } catch (error) {
     return response.status(400).json({ error: "Places not found" });
